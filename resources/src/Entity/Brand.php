@@ -1,4 +1,6 @@
 <?php
+namespace App\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,5 +27,29 @@ class Brand
      */
     private $name;
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return Brand
+     */
+    public function setName(string $name): Brand
+    {
+        $this->name = $name;
+        return $this;
+    }
 }

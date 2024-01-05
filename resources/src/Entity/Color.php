@@ -1,4 +1,6 @@
 <?php
+namespace App\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,5 +34,47 @@ class Color
      */
     private $hexaCode;
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return Color
+     */
+    public function setName(string $name): Color
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHexaCode(): string
+    {
+        return $this->hexaCode;
+    }
+
+    /**
+     * @param string $hexaCode
+     * @return Color
+     */
+    public function setHexaCode(string $hexaCode): Color
+    {
+        $this->hexaCode = $hexaCode;
+        return $this;
+    }
 }
