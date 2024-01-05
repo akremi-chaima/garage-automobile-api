@@ -27,5 +27,29 @@ class Energy
      */
     private $name;
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return Energy
+     */
+    public function setName(string $name): Energy
+    {
+        $this->name = $name;
+        return $this;
+    }
 }

@@ -15,7 +15,7 @@ class GetBrandsController extends AbstractController
     private $brandManager;
 
     /** @var SerializerInterface */
-    private $Serializer;
+    private $serializer;
 
     /**
      * @param BrandManager $brandManager

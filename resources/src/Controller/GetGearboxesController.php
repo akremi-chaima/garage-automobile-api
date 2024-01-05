@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-use App\Manager\ColorManager;
+use App\Manager\GearboxManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -9,37 +9,37 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Annotations as OA;
 
-class GetColorsController extends AbstractController
+class GetGearboxesController extends AbstractController
 {
-    /** @var ColorManager */
-    private $colorManager;
+    /** @var GearboxManager */
+    private $gearboxManager;
 
     /** @var SerializerInterface */
     private $serializer;
 
     /**
-     * @param ColorManager $colorManager
+     * @param GearboxManager $gearboxManager
      * @param SerializerInterface $serializer
      */
-    public function __construct(ColorManager $colorManager, SerializerInterface $serializer)
+    public function __construct(GearboxManager $gearboxManager, SerializerInterface $serializer)
     {
-        $this->colorManager = $colorManager;
+        $this->gearboxManager = $gearboxManager;
         $this->serializer = $serializer;
     }
 
     /**
-     * @Route("/api/colors", methods={"GET"})
+     * @Route("/api/gearboxes", methods={"GET"})
      *
-     * @OA\Tag(name="Color")
+     * @OA\Tag(name="Gearbox")
      *
-     * @OA\Response(response=200, description="Colors list")
+     * @OA\Response(response=200, description="Gearboxes list")
 
      * @return Response
      */
     public function __invoke(): Response
     {
-        $colors = $this->colorManager->findAll();
-        $normalizedList = $this->serializer->serialize($colors, 'json');
+        $gearboxes = $this->gearboxManager->findBy([], ['name' => 'ASC']);
+        $normalizedList = $this->serializer->serialize($gearboxes, 'json');
         return new JsonResponse(json_decode($normalizedList, true), Response::HTTP_OK);
     }
 }
