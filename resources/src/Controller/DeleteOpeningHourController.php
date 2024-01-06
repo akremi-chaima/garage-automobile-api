@@ -28,7 +28,7 @@ class DeleteOpeningHourController extends AbstractController
      *
      * @OA\Tag(name="Opening Hours")
      *
-     * @OA\Response(response=200, description="Opening hour delete")
+     * @OA\Response(response=200, description="Opening hour deleted")
      * @OA\Response(response=400, description="Error occurred")
      *
      * @param int $id
