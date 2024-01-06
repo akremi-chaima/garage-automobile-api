@@ -51,6 +51,16 @@ class GetModelsController extends AbstractController
      *
      * @OA\Tag(name="Model")
      *
+     * @OA\RequestBody(
+     *     required=true,
+     *     @OA\MediaType(
+     *          mediaType="application/json",
+     *          @OA\Schema(
+     *              @OA\Property(property="brandId", type="integer"),
+     *          )
+     *      )
+     * )
+     *
      * @OA\Response(response=200, description="Models list")
 
      * @return JsonResponse

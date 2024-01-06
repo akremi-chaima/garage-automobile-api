@@ -15,8 +15,8 @@ class GearboxNormalizer implements NormalizerInterface
     public function normalize($gearbox, string $format = null, array $context = [])
     {
        return [
-            'id' => $gearbox->getId(),
-            'name' => $gearbox->getName(),
+           'id' => $gearbox->getId(),
+           'name' => $gearbox->getName(),
         ];
 
     }

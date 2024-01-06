@@ -15,12 +15,12 @@ class UserNormalizer implements NormalizerInterface
     public function normalize($user, string $format = null, array $context = [])
     {
        return [
-            'id' => $user->getId(),
-            'firstName' => $user->getFirstname(),
-            'lastName' => $user->getLastname(),
-            'role' => $user->getRoles()[0],
-            'email' => $user->getUsername(),
-            'isActive' => $user->isActive(),
+           'id' => $user->getId(),
+           'firstName' => $user->getFirstname(),
+           'lastName' => $user->getLastname(),
+           'role' => $user->getRoles()[0],
+           'email' => $user->getUsername(),
+           'isActive' => $user->isActive(),
         ];
 
     }

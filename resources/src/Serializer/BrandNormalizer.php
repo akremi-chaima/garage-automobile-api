@@ -15,8 +15,8 @@ class BrandNormalizer implements NormalizerInterface
     public function normalize($brand, string $format = null, array $context = [])
     {
        return [
-            'id' => $brand->getId(),
-            'name' => $brand->getName(),
+           'id' => $brand->getId(),
+           'name' => $brand->getName(),
         ];
 
     }
