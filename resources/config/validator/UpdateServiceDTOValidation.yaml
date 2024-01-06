@@ -1,5 +1,8 @@
-App\DTO\AddServiceDTO:
+App\DTO\UpdateServiceDTO:
     properties:
+        id:
+            - Type: integer
+            - NotBlank: ~
         name:
             - Type: string
             - NotBlank: ~
