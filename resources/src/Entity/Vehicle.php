@@ -63,7 +63,7 @@ class Vehicle
     private $active = true;
 
     /**
-     * @var \Color
+     * @var Color
      *
      * @ORM\ManyToOne(targetEntity="Color")
      * @ORM\JoinColumns({
@@ -73,7 +73,7 @@ class Vehicle
     private $color;
 
     /**
-     * @var \Energy
+     * @var Energy
      *
      * @ORM\ManyToOne(targetEntity="Energy")
      * @ORM\JoinColumns({
@@ -83,7 +83,7 @@ class Vehicle
     private $energy;
 
     /**
-     * @var \Gearbox
+     * @var Gearbox
      *
      * @ORM\ManyToOne(targetEntity="Gearbox")
      * @ORM\JoinColumns({
@@ -93,7 +93,7 @@ class Vehicle
     private $gearbox;
 
     /**
-     * @var \Model
+     * @var Model
      *
      * @ORM\ManyToOne(targetEntity="Model")
      * @ORM\JoinColumns({

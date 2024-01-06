@@ -28,7 +28,7 @@ class Options
     private $name;
 
     /**
-     * @var \OptionType
+     * @var OptionType
      *
      * @ORM\ManyToOne(targetEntity="OptionType")
      * @ORM\JoinColumns({
@@ -38,18 +38,46 @@ class Options
     private $optionType;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Vehicle", mappedBy="options")
+     * @return int
      */
-    private $vehicle = array();
-
-    /**
-     * Constructor
-     */
-    public function __construct()
+    public function getId(): int
     {
-        $this->vehicle = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->id;
     }
 
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return Options
+     */
+    public function setName(string $name): Options
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return OptionType
+     */
+    public function getOptionType(): OptionType
+    {
+        return $this->optionType;
+    }
+
+    /**
+     * @param OptionType $optionType
+     * @return Options
+     */
+    public function setOptionType(OptionType $optionType): Options
+    {
+        $this->optionType = $optionType;
+        return $this;
+    }
 }
