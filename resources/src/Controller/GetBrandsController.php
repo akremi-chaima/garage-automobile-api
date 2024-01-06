@@ -35,7 +35,7 @@ class GetBrandsController extends AbstractController
      * @OA\Tag(name="Brand")
      *
      * @OA\Response(response=200, description="Brands list")
-
+     *
      * @return JsonResponse
      */
     public function __invoke(): JsonResponse

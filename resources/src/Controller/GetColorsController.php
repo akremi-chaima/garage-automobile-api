@@ -35,7 +35,7 @@ class GetColorsController extends AbstractController
      * @OA\Tag(name="Color")
      *
      * @OA\Response(response=200, description="Colors list")
-
+     *
      * @return JsonResponse
      */
     public function __invoke(): JsonResponse

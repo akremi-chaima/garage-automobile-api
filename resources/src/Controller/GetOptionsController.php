@@ -35,7 +35,7 @@ class GetOptionsController extends AbstractController
      * @OA\Tag(name="Options")
      *
      * @OA\Response(response=200, description="Options list")
-
+     *
      * @return JsonResponse
      */
     public function __invoke(): JsonResponse

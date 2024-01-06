@@ -35,7 +35,7 @@ class GetOpeningHoursController extends AbstractController
      * @OA\Tag(name="Opening Hours")
      *
      * @OA\Response(response=200, description="Opening hours list")
-
+     *
      * @return JsonResponse
      */
     public function __invoke(): JsonResponse

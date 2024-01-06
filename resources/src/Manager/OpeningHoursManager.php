@@ -24,4 +24,13 @@ class OpeningHoursManager extends AbstractManager
         $this->getEntityManager()->persist($openingHours);
         $this->getEntityManager()->flush();
     }
+
+    /**
+     * @param OpeningHours $openingHours
+     * @return void
+     */
+    public function delete(OpeningHours $openingHours) {
+        $this->getEntityManager()->remove($openingHours);
+        $this->getEntityManager()->flush();
+    }
 }

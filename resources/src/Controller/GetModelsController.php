@@ -64,7 +64,8 @@ class GetModelsController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="Models list")
-
+     *
+     * @param Request $request
      * @return JsonResponse
      */
     public function __invoke(Request $request): JsonResponse

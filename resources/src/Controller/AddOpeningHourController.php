@@ -63,7 +63,8 @@ class AddOpeningHourController extends AbstractController
      *
      * @OA\Response(response=200, description="Opening hour saved")
      * @OA\Response(response=400, description="Error occurred")
-
+     *
+     * @param Request $request
      * @return JsonResponse
      */
     public function __invoke(Request $request): JsonResponse

@@ -35,7 +35,7 @@ class GetGearboxesController extends AbstractController
      * @OA\Tag(name="Gearbox")
      *
      * @OA\Response(response=200, description="Gearboxes list")
-
+     *
      * @return JsonResponse
      */
     public function __invoke(): JsonResponse

@@ -35,7 +35,7 @@ class GetEnergiesController extends AbstractController
      * @OA\Tag(name="Energy")
      *
      * @OA\Response(response=200, description="Energies list")
-
+     *
      * @return JsonResponse
      */
     public function __invoke(): JsonResponse
