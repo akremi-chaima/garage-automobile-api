@@ -28,6 +28,8 @@ class GetGearboxesController extends AbstractController
     }
 
     /**
+     * Get gearboxes list
+     *
      * @Route("/api/gearboxes", methods={"GET"})
      *
      * @OA\Tag(name="Gearbox")

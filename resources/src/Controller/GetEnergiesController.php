@@ -28,6 +28,8 @@ class GetEnergiesController extends AbstractController
     }
 
     /**
+     * Get energies list
+     *
      * @Route("/api/energies", methods={"GET"})
      *
      * @OA\Tag(name="Energy")

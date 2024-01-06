@@ -28,6 +28,8 @@ class GetColorsController extends AbstractController
     }
 
     /**
+     * Get colors list
+     *
      * @Route("/api/colors", methods={"GET"})
      *
      * @OA\Tag(name="Color")

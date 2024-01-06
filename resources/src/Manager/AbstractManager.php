@@ -12,7 +12,7 @@ abstract class AbstractManager
     /**
      * @var EntityManagerInterface
      */
-    protected $entityManager;
+    private $entityManager;
 
     /** @var ObjectRepository $repository */
     protected $repository;

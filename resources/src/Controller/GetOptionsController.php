@@ -28,6 +28,8 @@ class GetOptionsController extends AbstractController
     }
 
     /**
+     * Get options list
+     *
      * @Route("/api/options", methods={"GET"})
      *
      * @OA\Tag(name="Options")

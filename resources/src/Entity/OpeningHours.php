@@ -55,5 +55,101 @@ class OpeningHours
      */
     private $afternoonEndHour;
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
+    /**
+     * @return string
+     */
+    public function getDay(): string
+    {
+        return $this->day;
+    }
+
+    /**
+     * @param string $day
+     * @return OpeningHours
+     */
+    public function setDay(string $day): OpeningHours
+    {
+        $this->day = $day;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMorningStartHour(): ?string
+    {
+        return $this->morningStartHour;
+    }
+
+    /**
+     * @param string|null $morningStartHour
+     * @return OpeningHours
+     */
+    public function setMorningStartHour(?string $morningStartHour): OpeningHours
+    {
+        $this->morningStartHour = $morningStartHour;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMorningEndHour(): ?string
+    {
+        return $this->morningEndHour;
+    }
+
+    /**
+     * @param string|null $morningEndHour
+     * @return OpeningHours
+     */
+    public function setMorningEndHour(?string $morningEndHour): OpeningHours
+    {
+        $this->morningEndHour = $morningEndHour;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAfternoonStartHour(): ?string
+    {
+        return $this->afternoonStartHour;
+    }
+
+    /**
+     * @param string|null $afternoonStartHour
+     * @return OpeningHours
+     */
+    public function setAfternoonStartHour(?string $afternoonStartHour): OpeningHours
+    {
+        $this->afternoonStartHour = $afternoonStartHour;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAfternoonEndHour(): ?string
+    {
+        return $this->afternoonEndHour;
+    }
+
+    /**
+     * @param string|null $afternoonEndHour
+     * @return OpeningHours
+     */
+    public function setAfternoonEndHour(?string $afternoonEndHour): OpeningHours
+    {
+        $this->afternoonEndHour = $afternoonEndHour;
+        return $this;
+    }
 }

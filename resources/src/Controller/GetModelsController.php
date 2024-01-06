@@ -47,6 +47,8 @@ class GetModelsController extends AbstractController
     }
 
     /**
+     * Get models list
+     *
      * @Route("/api/models", methods={"POST"})
      *
      * @OA\Tag(name="Model")
