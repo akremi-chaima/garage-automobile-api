@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `garage-automobile`.`service` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `garage-automobile`.`opening_hours` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `day` VARCHAR(5) NOT NULL,
+    `day` VARCHAR(10) NOT NULL,
     `morning_start_hour` VARCHAR(5) NULL,
     `morning_end_hour` VARCHAR(5) NULL,
     `afternoon_start_hour` VARCHAR(5) NULL,

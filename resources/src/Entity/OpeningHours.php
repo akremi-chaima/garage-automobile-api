@@ -23,7 +23,7 @@ class OpeningHours
     /**
      * @var string
      *
-     * @ORM\Column(name="day", type="string", length=5, nullable=false)
+     * @ORM\Column(name="day", type="string", length=10, nullable=false)
      */
     private $day;
 
