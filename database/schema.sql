@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `garage-automobile`.`user` (
     `firstname` VARCHAR(60) NOT NULL,
     `lastname` VARCHAR(60) NOT NULL,
     `email` VARCHAR(60) NOT NULL,
-    `password` VARCHAR(16) NOT NULL,
+    `password` VARCHAR(200) NOT NULL,
     `role` VARCHAR(16) NOT NULL,
     `active` TINYINT NOT NULL DEFAULT 1,
     PRIMARY KEY (`id`))

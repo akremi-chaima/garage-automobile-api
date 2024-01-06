@@ -32,7 +32,7 @@ class GetUsersController extends AbstractController
      *
      * @Route("/api/users", methods={"GET"})
      *
-     * @OA\Tag(name="Brand")
+     * @OA\Tag(name="Users")
      *
      * @OA\Response(response=200, description="Users list")
      *
