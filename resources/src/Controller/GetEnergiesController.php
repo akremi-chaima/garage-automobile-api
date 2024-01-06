@@ -34,9 +34,9 @@ class GetEnergiesController extends AbstractController
      *
      * @OA\Response(response=200, description="Energies list")
 
-     * @return Response
+     * @return JsonResponse
      */
-    public function __invoke(): Response
+    public function __invoke(): JsonResponse
     {
         $energies = $this->energyManager->findBy([], ['name' => 'ASC']);
         $normalizedList = $this->serializer->serialize($energies, 'json');

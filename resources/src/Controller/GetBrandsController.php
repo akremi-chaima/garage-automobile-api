@@ -34,9 +34,9 @@ class GetBrandsController extends AbstractController
      *
      * @OA\Response(response=200, description="Brands list")
 
-     * @return Response
+     * @return JsonResponse
      */
-    public function __invoke(): Response
+    public function __invoke(): JsonResponse
     {
         $brands = $this->brandManager->findBy([], ['name' => 'ASC']);
         $normalizedList = $this->serializer->serialize($brands, 'json');

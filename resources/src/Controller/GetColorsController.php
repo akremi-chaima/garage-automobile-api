@@ -34,9 +34,9 @@ class GetColorsController extends AbstractController
      *
      * @OA\Response(response=200, description="Colors list")
 
-     * @return Response
+     * @return JsonResponse
      */
-    public function __invoke(): Response
+    public function __invoke(): JsonResponse
     {
         $colors = $this->colorManager->findAll();
         $normalizedList = $this->serializer->serialize($colors, 'json');

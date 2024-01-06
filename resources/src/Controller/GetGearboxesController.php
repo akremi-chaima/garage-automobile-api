@@ -34,9 +34,9 @@ class GetGearboxesController extends AbstractController
      *
      * @OA\Response(response=200, description="Gearboxes list")
 
-     * @return Response
+     * @return JsonResponse
      */
-    public function __invoke(): Response
+    public function __invoke(): JsonResponse
     {
         $gearboxes = $this->gearboxManager->findBy([], ['name' => 'ASC']);
         $normalizedList = $this->serializer->serialize($gearboxes, 'json');
