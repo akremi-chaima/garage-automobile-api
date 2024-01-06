@@ -34,5 +34,47 @@ class Service
      */
     private $active = true;
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return Service
+     */
+    public function setName(string $name): Service
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param bool $active
+     * @return Service
+     */
+    public function setActive(bool $active): Service
+    {
+        $this->active = $active;
+        return $this;
+    }
 }
