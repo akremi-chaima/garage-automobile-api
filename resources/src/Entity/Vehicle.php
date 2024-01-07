@@ -21,7 +21,7 @@ class Vehicle
     private $id;
 
     /**
-     * @var string
+     * @var float
      *
      * @ORM\Column(name="price", type="decimal", precision=10, scale=2, nullable=false)
      */
@@ -30,9 +30,9 @@ class Vehicle
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="circulation_year", type="date", nullable=false)
+     * @ORM\Column(name="circulation_date", type="date", nullable=false)
      */
-    private $circulationYear;
+    private $circulationDate;
 
     /**
      * @var int
@@ -103,7 +103,7 @@ class Vehicle
     private $model;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Options[] $options
      *
      * @ORM\ManyToMany(targetEntity="Options", inversedBy="vehicle")
      * @ORM\JoinTable(name="vehicle_options",
@@ -125,4 +125,209 @@ class Vehicle
         $this->options = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     * @return Vehicle
+     */
+    public function setPrice(float $price): Vehicle
+    {
+        $this->price = $price;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCirculationDate(): \DateTime
+    {
+        return $this->circulationDate;
+    }
+
+    /**
+     * @param \DateTime $circulationDate
+     * @return Vehicle
+     */
+    public function setCirculationDate(\DateTime $circulationDate): Vehicle
+    {
+        $this->circulationDate = $circulationDate;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMileage(): int
+    {
+        return $this->mileage;
+    }
+
+    /**
+     * @param int $mileage
+     * @return Vehicle
+     */
+    public function setMileage(int $mileage): Vehicle
+    {
+        $this->mileage = $mileage;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFiscalPower(): int
+    {
+        return $this->fiscalPower;
+    }
+
+    /**
+     * @param int $fiscalPower
+     * @return Vehicle
+     */
+    public function setFiscalPower(int $fiscalPower): Vehicle
+    {
+        $this->fiscalPower = $fiscalPower;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getManufacturingYear(): int
+    {
+        return $this->manufacturingYear;
+    }
+
+    /**
+     * @param int $manufacturingYear
+     * @return Vehicle
+     */
+    public function setManufacturingYear(int $manufacturingYear): Vehicle
+    {
+        $this->manufacturingYear = $manufacturingYear;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param bool $active
+     * @return Vehicle
+     */
+    public function setActive(bool $active): Vehicle
+    {
+        $this->active = $active;
+        return $this;
+    }
+
+    /**
+     * @return Color
+     */
+    public function getColor(): Color
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param Color $color
+     * @return Vehicle
+     */
+    public function setColor(Color $color): Vehicle
+    {
+        $this->color = $color;
+        return $this;
+    }
+
+    /**
+     * @return Energy
+     */
+    public function getEnergy(): Energy
+    {
+        return $this->energy;
+    }
+
+    /**
+     * @param Energy $energy
+     * @return Vehicle
+     */
+    public function setEnergy(Energy $energy): Vehicle
+    {
+        $this->energy = $energy;
+        return $this;
+    }
+
+    /**
+     * @return Gearbox
+     */
+    public function getGearbox(): Gearbox
+    {
+        return $this->gearbox;
+    }
+
+    /**
+     * @param Gearbox $gearbox
+     * @return Vehicle
+     */
+    public function setGearbox(Gearbox $gearbox): Vehicle
+    {
+        $this->gearbox = $gearbox;
+        return $this;
+    }
+
+    /**
+     * @return Model
+     */
+    public function getModel(): Model
+    {
+        return $this->model;
+    }
+
+    /**
+     * @param Model $model
+     * @return Vehicle
+     */
+    public function setModel(Model $model): Vehicle
+    {
+        $this->model = $model;
+        return $this;
+    }
+
+    /**
+     * @return Options[]|\Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getOptions(): \Doctrine\Common\Collections\ArrayCollection|array
+    {
+        return $this->options;
+    }
+
+    /**
+     * @param Options[]|\Doctrine\Common\Collections\ArrayCollection $options
+     * @return Vehicle
+     */
+    public function setOptions(\Doctrine\Common\Collections\ArrayCollection|array $options): Vehicle
+    {
+        $this->options = $options;
+        return $this;
+    }
 }

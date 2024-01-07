@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `garage-automobile`.`gearbox` (
 CREATE TABLE IF NOT EXISTS `garage-automobile`.`vehicle` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `price` DECIMAL(10,2) NOT NULL,
-    `circulation_year` DATE NOT NULL,
+    `circulation_date` DATE NOT NULL,
     `mileage` INT NOT NULL,
     `fiscal_power` INT NOT NULL,
     `manufacturing_year` INT NOT NULL,
