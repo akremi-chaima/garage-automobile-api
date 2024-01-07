@@ -103,7 +103,7 @@ class Vehicle
     private $model;
 
     /**
-     * @var Options[] $options
+     * @var \Doctrine\ORM\PersistentCollection $options
      *
      * @ORM\ManyToMany(targetEntity="Options", inversedBy="vehicle")
      * @ORM\JoinTable(name="vehicle_options",
@@ -314,9 +314,9 @@ class Vehicle
     }
 
     /**
-     * @return Options[]|\Doctrine\Common\Collections\ArrayCollection
+     * @return \Doctrine\ORM\PersistentCollection
      */
-    public function getOptions(): \Doctrine\Common\Collections\ArrayCollection|array
+    public function getOptions(): \Doctrine\ORM\PersistentCollection
     {
         return $this->options;
     }
