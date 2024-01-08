@@ -39,7 +39,7 @@ class DeleteOpeningHourController extends AbstractController
         /** @var OpeningHours|null $openingHour */
         $openingHour = $this->openingHoursManager->findOneBy(['id' => $id]);
         if (empty($openingHour)) {
-            return new JsonResponse(['error_message' => 'Opening hour not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The opening hour is not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $this->openingHoursManager->delete($openingHour);

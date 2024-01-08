@@ -39,7 +39,7 @@ class DeleteVehicleController extends AbstractController
         /** @var Vehicle|null $vehicle */
         $vehicle = $this->vehicleManager->findOneBy(['id' => $id]);
         if (empty($vehicle)) {
-            return new JsonResponse(['error_message' => 'Vehicle not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The vehicle is not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $this->vehicleManager->delete($vehicle);

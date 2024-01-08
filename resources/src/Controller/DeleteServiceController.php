@@ -39,7 +39,7 @@ class DeleteServiceController extends AbstractController
         /** @var Service|null $service */
         $service = $this->serviceManager->findOneBy(['id' => $id]);
         if (empty($service)) {
-            return new JsonResponse(['error_message' => 'Service not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The service is not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $this->serviceManager->delete($service);

@@ -37,6 +37,17 @@ class AddPictureController extends AbstractController
      *
      * @OA\Tag(name="Pictures")
      *
+     * @OA\RequestBody(
+     *     required=true,
+     *     @OA\MediaType(
+     *          mediaType="multipart/form-data",
+     *          @OA\Schema(
+     *              required={"file"},
+     *              @OA\Property(property="file", type="file"),
+     *          )
+     *      )
+     * )
+     *
      * @OA\Response(response=200, description="Picture saved")
      * @OA\Response(response=400, description="Error occurred")
      *
@@ -49,13 +60,13 @@ class AddPictureController extends AbstractController
         /** @var UploadedFile|null $file */
         $file = $request->files->get('file');
         if (is_null($file) ) {
-            return new JsonResponse(['error_message' => 'The files should not be empty'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The file should not be empty'], Response::HTTP_BAD_REQUEST);
         }
 
         /** @var Vehicle|null $vehicle */
         $vehicle = $this->vehicleManager->findOneBy(['id' => $vehicleId]);
         if (empty($vehicle)) {
-            return new JsonResponse(['error_message' => 'Vehicle not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The vehicle is not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $picture = (new Picture())

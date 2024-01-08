@@ -86,7 +86,7 @@ class UpdateOpeningHourController extends AbstractController
         /** @var OpeningHours|null $openingHour */
         $openingHour = $this->openingHoursManager->findOneBy(['id' => $dto->getId()]);
         if (empty($openingHour)) {
-            return new JsonResponse(['error_message' => 'Opening hour not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The opening hour is not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $openingHour->setDay($dto->getDay())
