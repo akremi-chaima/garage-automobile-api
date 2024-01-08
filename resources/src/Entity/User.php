@@ -65,6 +65,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $active = true;
 
     /**
+     * @param int $id
+     * @return User
+     */
+    public function setId(int $id): User
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
