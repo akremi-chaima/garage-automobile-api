@@ -23,19 +23,12 @@ class Picture
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=200, nullable=false)
+     * @ORM\Column(name="name", type="string", length=200, nullable=false)
      */
-    private $url;
+    private $name;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="is_principal", type="boolean", nullable=false, options={"default"="1"})
-     */
-    private $isPrincipal = true;
-
-    /**
-     * @var \Vehicle
+     * @var Vehicle
      *
      * @ORM\ManyToOne(targetEntity="Vehicle")
      * @ORM\JoinColumns({
@@ -44,5 +37,47 @@ class Picture
      */
     private $vehicle;
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return Picture
+     */
+    public function setName(string $name): Picture
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return Vehicle
+     */
+    public function getVehicle(): Vehicle
+    {
+        return $this->vehicle;
+    }
+
+    /**
+     * @param Vehicle $vehicle
+     * @return Picture
+     */
+    public function setVehicle(Vehicle $vehicle): Picture
+    {
+        $this->vehicle = $vehicle;
+        return $this;
+    }
 }

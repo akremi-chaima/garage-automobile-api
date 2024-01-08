@@ -150,8 +150,7 @@ CREATE TABLE IF NOT EXISTS `garage-automobile`.`vehicle` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `garage-automobile`.`picture` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `url` VARCHAR(200) NOT NULL,
-    `is_principal` TINYINT NOT NULL DEFAULT 1,
+    `name` VARCHAR(200) NOT NULL,
     `vehicle_id` INT NOT NULL,
     PRIMARY KEY (`id`),
     INDEX `fk_picture_vehicle1_idx` (`vehicle_id` ASC) VISIBLE,
