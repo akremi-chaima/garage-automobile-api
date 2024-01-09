@@ -82,7 +82,7 @@ class UpdateVehicleController extends AbstractController
     /**
      * Update vehicle
      *
-     * @Route("/api/vehicle", methods={"PUT"})
+     * @Route("/api/private/vehicle", methods={"PUT"})
      *
      * @OA\Tag(name="Vehicles")
      *

@@ -33,7 +33,7 @@ class AddPictureController extends AbstractController
     /**
      * Add picture
      *
-     * @Route("/api/picture/{vehicleId}", methods={"POST"})
+     * @Route("/api/private/picture/{vehicleId}", methods={"POST"})
      *
      * @OA\Tag(name="Pictures")
      *

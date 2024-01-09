@@ -24,7 +24,7 @@ class DeleteVehicleController extends AbstractController
     /**
      * Delete vehicle
      *
-     * @Route("/api/vehicle/{id}", methods={"DELETE"})
+     * @Route("/api/private/vehicle/{id}", methods={"DELETE"})
      *
      * @OA\Tag(name="Vehicles")
      *

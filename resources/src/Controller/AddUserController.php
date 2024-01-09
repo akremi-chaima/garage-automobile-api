@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Annotations as OA;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class AddUserController extends AbstractController
 {
@@ -50,7 +51,7 @@ class AddUserController extends AbstractController
     /**
      * Add user
      *
-     * @Route("/api/user", methods={"POST"})
+     * @Route("/api/private/user", methods={"POST"})
      *
      * @OA\Tag(name="Users")
      *
@@ -74,10 +75,15 @@ class AddUserController extends AbstractController
      * @OA\Response(response=400, description="Error occurred")
      *
      * @param Request $request
+     * @param UserInterface $user
      * @return JsonResponse
      */
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(Request $request, UserInterface $user): JsonResponse
     {
+        if (!in_array('administrator', $user->getRoles())) {
+            return new JsonResponse(['error_message' => 'The user should be administrator.'], Response::HTTP_BAD_REQUEST);
+        }
+
         /** @var AddUserDTO $dto */
         $dto = $this->serializer->deserialize($request->getContent(), AddUserDTO::class, 'json');
 

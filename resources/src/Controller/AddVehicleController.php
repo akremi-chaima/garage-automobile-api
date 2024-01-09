@@ -82,7 +82,7 @@ class AddVehicleController extends AbstractController
     /**
      * Add vehicle
      *
-     * @Route("/api/vehicle", methods={"POST"})
+     * @Route("/api/private/vehicle", methods={"POST"})
      *
      * @OA\Tag(name="Vehicles")
      *

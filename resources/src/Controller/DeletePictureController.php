@@ -24,7 +24,7 @@ class DeletePictureController extends AbstractController
     /**
      * Delete picture
      *
-     * @Route("/api/picture/{id}", methods={"DELETE"})
+     * @Route("/api/private/picture/{id}", methods={"DELETE"})
      *
      * @OA\Tag(name="Pictures")
      *

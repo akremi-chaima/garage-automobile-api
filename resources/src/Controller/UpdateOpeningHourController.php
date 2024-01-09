@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Annotations as OA;
@@ -42,7 +43,7 @@ class UpdateOpeningHourController extends AbstractController
     /**
      * Update opening hour
      *
-     * @Route("/api/opening/hour", methods={"PUT"})
+     * @Route("/api/private/opening/hour", methods={"PUT"})
      *
      * @OA\Tag(name="Opening Hours")
      *
@@ -66,10 +67,15 @@ class UpdateOpeningHourController extends AbstractController
      * @OA\Response(response=400, description="Error occurred")
      *
      * @param Request $request
+     * @param UserInterface $user
      * @return JsonResponse
      */
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(Request $request, UserInterface $user): JsonResponse
     {
+        if (!in_array('administrator', $user->getRoles())) {
+            return new JsonResponse(['error_message' => 'The user should be administrator.'], Response::HTTP_BAD_REQUEST);
+        }
+
         /** @var UpdateOpeningHourDTO $dto */
         $dto = $this->serializer->deserialize($request->getContent(), UpdateOpeningHourDTO::class, 'json');
 
