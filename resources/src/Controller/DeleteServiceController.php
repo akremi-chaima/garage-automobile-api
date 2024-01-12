@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\Service;
+use App\Entity\User;
 use App\Manager\ServiceManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -38,7 +39,7 @@ class DeleteServiceController extends AbstractController
      */
     public function __invoke(UserInterface $user, int $id): JsonResponse
     {
-        if (!in_array('administrator', $user->getRoles())) {
+        if (!in_array(User::ROLE_ADMINISTRATOR, $user->getRoles())) {
             return new JsonResponse(['error_message' => 'The user should be administrator.'], Response::HTTP_BAD_REQUEST);
         }
 

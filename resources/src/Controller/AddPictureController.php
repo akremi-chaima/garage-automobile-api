@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\Picture;
+use App\Entity\User;
 use App\Entity\Vehicle;
 use App\Manager\PictureManager;
 use App\Manager\VehicleManager;
@@ -12,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Annotations as OA;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class AddPictureController extends AbstractController
 {
@@ -52,11 +54,16 @@ class AddPictureController extends AbstractController
      * @OA\Response(response=400, description="Error occurred")
      *
      * @param Request $request
+     * @param UserInterface $user
      * @param int $vehicleId
      * @return JsonResponse
      */
-    public function __invoke(Request $request, int $vehicleId): JsonResponse
+    public function __invoke(Request $request, UserInterface $user, int $vehicleId): JsonResponse
     {
+        if (!in_array(User::ROLE_ADMINISTRATOR, $user->getRoles()) && !in_array(User::ROLE_EMPLOYEE, $user->getRoles())) {
+            return new JsonResponse(['error_message' => 'The user should be administrator or employee.'], Response::HTTP_BAD_REQUEST);
+        }
+
         /** @var UploadedFile|null $file */
         $file = $request->files->get('file');
         if (is_null($file) ) {

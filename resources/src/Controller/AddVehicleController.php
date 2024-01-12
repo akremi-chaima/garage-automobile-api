@@ -7,6 +7,7 @@ use App\Entity\Energy;
 use App\Entity\Gearbox;
 use App\Entity\Model;
 use App\Entity\Options;
+use App\Entity\User;
 use App\Entity\Vehicle;
 use App\Manager\ColorManager;
 use App\Manager\EnergyManager;
@@ -18,6 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Annotations as OA;
@@ -111,10 +113,15 @@ class AddVehicleController extends AbstractController
      * @OA\Response(response=400, description="Error occurred")
      *
      * @param Request $request
+     * @param UserInterface $user
      * @return JsonResponse
      */
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(Request $request, UserInterface $user): JsonResponse
     {
+        if (!in_array(User::ROLE_ADMINISTRATOR, $user->getRoles()) && !in_array(User::ROLE_EMPLOYEE, $user->getRoles())) {
+            return new JsonResponse(['error_message' => 'The user should be administrator or employee.'], Response::HTTP_BAD_REQUEST);
+        }
+
         /** @var AddVehicleDTO $dto */
         $dto = $this->serializer->deserialize($request->getContent(), AddVehicleDTO::class, 'json');
 
