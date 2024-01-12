@@ -44,7 +44,7 @@ class GetVehiclesController extends AbstractController
     public function __invoke(int $page, int $itemsPerPage): JsonResponse
     {
         $vehiclesTotalNumber = $this->vehicleManager->count([]);
-        $vehiclesPaginator = $this->vehicleManager->get([], 1, 10);
+        $vehiclesPaginator = $this->vehicleManager->get([], $page, $itemsPerPage);
         $result = [
             'data' => json_decode($this->serializer->serialize($vehiclesPaginator->getItems(), 'json'), true),
             'currentPage' => $page,
