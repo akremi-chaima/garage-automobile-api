@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Annotations as OA;
+use \Knp\Component\Pager\Pagination\PaginationInterface;
 
 class GetVehiclesController extends AbstractController
 {
@@ -30,18 +31,25 @@ class GetVehiclesController extends AbstractController
     /**
      * Get vehicles list
      *
-     * @Route("/api/vehicles", methods={"GET"})
+     * @Route("/api/vehicles/{page}/{itemsPerPage}", methods={"POST"})
      *
      * @OA\Tag(name="Vehicles")
      *
      * @OA\Response(response=200, description="Vehicles list")
      *
+     * @param int $page
+     * @param int $itemsPerPage
      * @return JsonResponse
      */
-    public function __invoke(): JsonResponse
+    public function __invoke(int $page, int $itemsPerPage): JsonResponse
     {
-        $vehicles = $this->vehicleManager->findAll();
-        $normalizedList = $this->serializer->serialize($vehicles, 'json');
-        return new JsonResponse(json_decode($normalizedList, true), Response::HTTP_OK);
+        $vehiclesTotalNumber = $this->vehicleManager->count([]);
+        $vehiclesPaginator = $this->vehicleManager->get([], 1, 10);
+        $result = [
+            'data' => json_decode($this->serializer->serialize($vehiclesPaginator->getItems(), 'json'), true),
+            'currentPage' => $page,
+            'totalItems' => $vehiclesTotalNumber,
+        ];
+        return new JsonResponse($result, Response::HTTP_OK);
     }
 }
