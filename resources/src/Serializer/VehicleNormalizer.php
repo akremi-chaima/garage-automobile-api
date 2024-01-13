@@ -2,6 +2,7 @@
 namespace App\Serializer;
 
 use App\Entity\Vehicle;
+use App\Manager\PictureManager;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class VehicleNormalizer implements NormalizerInterface
@@ -21,25 +22,37 @@ class VehicleNormalizer implements NormalizerInterface
     /** @var OptionNormalizer */
     private $optionNormalizer;
 
+    /** @var PictureNormalizer */
+    private $pictureNormalizer;
+
+    /** @var PictureManager */
+    private $pictureManager;
+
     /**
      * @param ColorNormalizer $colorNormalizer
      * @param ModelNormalizer $modelNormalizer
      * @param EnergyNormalizer $energyNormalizer
      * @param GearboxNormalizer $gearboxNormalizer
      * @param OptionNormalizer $optionNormalizer
+     * @param PictureNormalizer $pictureNormalizer
+     * @param PictureManager $pictureManager
      */
     public function __construct(
         ColorNormalizer $colorNormalizer,
         ModelNormalizer $modelNormalizer,
         EnergyNormalizer $energyNormalizer,
         GearboxNormalizer $gearboxNormalizer,
-        OptionNormalizer $optionNormalizer
+        OptionNormalizer $optionNormalizer,
+        PictureNormalizer $pictureNormalizer,
+        PictureManager $pictureManager
     ) {
         $this->colorNormalizer = $colorNormalizer;
         $this->modelNormalizer = $modelNormalizer;
         $this->energyNormalizer = $energyNormalizer;
         $this->gearboxNormalizer = $gearboxNormalizer;
         $this->optionNormalizer = $optionNormalizer;
+        $this->pictureNormalizer = $pictureNormalizer;
+        $this->pictureManager = $pictureManager;
     }
 
     /**
@@ -55,6 +68,12 @@ class VehicleNormalizer implements NormalizerInterface
             $options[] = $this->optionNormalizer->normalize($option);
         }
 
+        $picturesList = $this->pictureManager->findBy(['vehicle' => $vehicle]);
+        $pictures = [];
+        foreach ($picturesList as $picture) {
+            $pictures[] = $this->pictureNormalizer->normalize($picture);
+        }
+
         return [
            'id' => $vehicle->getId(),
            'circulationDate' => $vehicle->getCirculationDate()->format('d/m/Y'),
@@ -67,8 +86,8 @@ class VehicleNormalizer implements NormalizerInterface
            'gearbox' => $this->gearboxNormalizer->normalize($vehicle->getGearbox()),
            'model' => $this->modelNormalizer->normalize($vehicle->getModel()),
            'options' => $options,
+           'pictures' => $pictures,
         ];
-
     }
 
     public function supportsNormalization($data, string $format = null, array $context = [])
