@@ -35,7 +35,7 @@ class GetVehicleController extends AbstractController
      * @OA\Tag(name="Vehicles")
      *
      * @OA\Response(response=200, description="Vehicle")
-     * @OA\Response(response=400, description="Vehicle not found | Invalid user role")
+     * @OA\Response(response=400, description="Vehicle not found")
      *
      * @param int $id
      * @return JsonResponse

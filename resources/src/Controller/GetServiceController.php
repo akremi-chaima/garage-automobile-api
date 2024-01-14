@@ -37,7 +37,7 @@ class GetServiceController extends AbstractController
      * @OA\Tag(name="Services")
      *
      * @OA\Response(response=200, description="Service")
-     * @OA\Response(response=400, description="Service not found | Invalid user role")
+     * @OA\Response(response=400, description="The user should be administrator | The service is not found")
      *
      * @param UserInterface $user
      * @param int $id

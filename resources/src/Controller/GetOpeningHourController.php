@@ -10,27 +10,36 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use OpenApi\Annotations as OA;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
-class DeleteOpeningHourController extends AbstractController
+class GetOpeningHourController extends AbstractController
 {
     /** @var OpeningHoursManager */
     private $openingHoursManager;
 
+    /** @var SerializerInterface */
+    private $serializer;
+
     /**
      * @param OpeningHoursManager $openingHoursManager
+     * @param SerializerInterface $serializer
      */
-    public function __construct(OpeningHoursManager $openingHoursManager) {
+    public function __construct(
+        OpeningHoursManager $openingHoursManager,
+        SerializerInterface $serializer
+    ) {
         $this->openingHoursManager = $openingHoursManager;
+        $this->serializer = $serializer;
     }
 
     /**
-     * Delete opening hour
+     * Get opening hour by id
      *
-     * @Route("/api/private/opening/hour/{id}", methods={"DELETE"})
+     * @Route("/api/private/opening/hour/{id}", methods={"GET"})
      *
      * @OA\Tag(name="Opening Hours")
      *
-     * @OA\Response(response=200, description="Opening hour deleted")
+     * @OA\Response(response=200, description="Opening hour")
      * @OA\Response(response=400, description="The user should be administrator | The opening hour is not found")
      *
      * @param UserInterface $user
@@ -49,7 +58,7 @@ class DeleteOpeningHourController extends AbstractController
             return new JsonResponse(['error_message' => 'The opening hour is not found'], Response::HTTP_BAD_REQUEST);
         }
 
-        $this->openingHoursManager->delete($openingHour);
-        return new JsonResponse(['message' => 'OK'], Response::HTTP_OK);
+        $normalizedOpeningHour = $this->serializer->serialize($openingHour, 'json');
+        return new JsonResponse(json_decode($normalizedOpeningHour, true), Response::HTTP_OK);
     }
 }

@@ -65,7 +65,7 @@ class UpdateOpeningHourController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="Opening hour updated")
-     * @OA\Response(response=400, description="Error occurred")
+     * @OA\Response(response=400, description="The user should be administrator | The opening hour is not found")
      *
      * @param Request $request
      * @param UserInterface $user

@@ -51,7 +51,7 @@ class AddPictureController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="Picture saved")
-     * @OA\Response(response=400, description="Error occurred")
+     * @OA\Response(response=400, description="The user should be administrator or employee | The file should not be empty | The vehicle is not found")
      *
      * @param Request $request
      * @param UserInterface $user

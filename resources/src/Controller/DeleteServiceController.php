@@ -31,7 +31,7 @@ class DeleteServiceController extends AbstractController
      * @OA\Tag(name="Services")
      *
      * @OA\Response(response=200, description="Service deleted")
-     * @OA\Response(response=400, description="Error occurred")
+     * @OA\Response(response=400, description="The user should be administrator | The service is not found")
      *
      * @param UserInterface $user
      * @param int $id

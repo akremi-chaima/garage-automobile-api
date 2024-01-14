@@ -110,7 +110,7 @@ class AddVehicleController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="Vehicle saved")
-     * @OA\Response(response=400, description="Error occurred")
+     * @OA\Response(response=400, description="The user should be administrator or employee | The color is not found | The gearbox is not found | The energy is not found | The model is not found | The options should not be empty | The option is not found")
      *
      * @param Request $request
      * @param UserInterface $user

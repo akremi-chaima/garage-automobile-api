@@ -72,7 +72,7 @@ class AddUserController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="User saved")
-     * @OA\Response(response=400, description="Error occurred")
+     * @OA\Response(response=400, description="The user should be administrator | The email is already used")
      *
      * @param Request $request
      * @param UserInterface $user

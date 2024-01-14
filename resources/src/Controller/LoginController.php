@@ -73,7 +73,7 @@ class LoginController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="User login")
-     * @OA\Response(response=400, description="Error occurred")
+     * @OA\Response(response=400, description="Invalid credentials")
      *
      * @param Request $request
      * @return JsonResponse
@@ -96,7 +96,7 @@ class LoginController extends AbstractController
         // check used email
         $user = $this->userManager->findOneBy(['email' => $dto->getEmail()]);
         if (!$user instanceof User || !$this->userPasswordHasherInterface->isPasswordValid($user, hash('sha256', $dto->getPassword())) || !$user->isActive()) {
-            return new JsonResponse(['message' => 'invalid_credentials'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['message' => 'Invalid credentials'], Response::HTTP_BAD_REQUEST);
         }
 
 
