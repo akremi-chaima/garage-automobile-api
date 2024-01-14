@@ -99,7 +99,7 @@ class UpdateUserController extends AbstractController
         // get user to update
         /** @var User|null $userById */
         $userById = $this->userManager->findOneBy(['id' => $dto->getId()]);
-        if (!is_null($userById)) {
+        if (is_null($userById)) {
             return new JsonResponse(['error_message' => 'The user not found'], Response::HTTP_BAD_REQUEST);
         }
 
