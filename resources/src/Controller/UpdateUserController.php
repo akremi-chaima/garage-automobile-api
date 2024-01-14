@@ -64,7 +64,7 @@ class UpdateUserController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="User updated")
-     * @OA\Response(response=400, description="Error occurred")
+     * @OA\Response(response=400, description="The user should be administrator | The email is already used | The user not found")
      *
      * @param Request $request
      * @param UserInterface $user
@@ -90,19 +90,26 @@ class UpdateUserController extends AbstractController
         }
 
         // check used email
-        /** @var User $user */
-        $user = $this->userManager->findOneBy(['email' => $dto->getEmail()]);
-        if (!is_null($user) && $user->getId() !== $dto->getId()) {
+        /** @var User|null $userByEmail */
+        $userByEmail = $this->userManager->findOneBy(['email' => $dto->getEmail()]);
+        if (!is_null($userByEmail) && $userByEmail->getId() !== $dto->getId()) {
             return new JsonResponse(['error_message' => 'The email is already used'], Response::HTTP_BAD_REQUEST);
         }
 
-        $user->setLastname($dto->getLastname())
+        // get user to update
+        /** @var User|null $userById */
+        $userById = $this->userManager->findOneBy(['id' => $dto->getId()]);
+        if (!is_null($userById)) {
+            return new JsonResponse(['error_message' => 'The user not found'], Response::HTTP_BAD_REQUEST);
+        }
+
+        $userById->setLastname($dto->getLastname())
             ->setFirstname($dto->getFirstname())
             ->setUsername($dto->getEmail())
             ->setRoles($dto->getRole())
             ->setActive($dto->getIsActive());
 
-        $this->userManager->save($user);
+        $this->userManager->save($userById);
         return new JsonResponse(['message' => 'OK'], Response::HTTP_OK);
     }
 }
