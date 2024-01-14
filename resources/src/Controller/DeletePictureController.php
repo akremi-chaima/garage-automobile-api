@@ -31,7 +31,7 @@ class DeletePictureController extends AbstractController
      * @OA\Tag(name="Pictures")
      *
      * @OA\Response(response=200, description="Picture deleted")
-     * @OA\Response(response=400, description="Error occurred")
+     * @OA\Response(response=400, description="The user should be administrator or employee | The picture is not found")
      *
      * @param UserInterface $user
      * @param int $id

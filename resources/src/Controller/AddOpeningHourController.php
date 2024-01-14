@@ -64,7 +64,7 @@ class AddOpeningHourController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="Opening hour saved")
-     * @OA\Response(response=400, description="Error occurred")
+     * @OA\Response(response=400, description="The user should be administrator")
      *
      * @param Request $request
      * @param UserInterface $user
