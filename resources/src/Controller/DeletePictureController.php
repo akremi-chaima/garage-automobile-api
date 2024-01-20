@@ -40,7 +40,7 @@ class DeletePictureController extends AbstractController
     public function __invoke(UserInterface $user, int $id): JsonResponse
     {
         if (!in_array(User::ROLE_ADMINISTRATOR, $user->getRoles()) && !in_array(User::ROLE_EMPLOYEE, $user->getRoles())) {
-            return new JsonResponse(['error_message' => 'The user should be administrator or employee.'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The user should be administrator or employee'], Response::HTTP_BAD_REQUEST);
         }
 
         /** @var Picture|null $picture */

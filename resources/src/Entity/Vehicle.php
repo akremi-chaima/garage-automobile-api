@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Vehicle
  *
- * @ORM\Table(name="vehicle", indexes={@ORM\Index(name="fk_vehicle_model1_idx", columns={"model_id"}), @ORM\Index(name="fk_vehicle_gearbox1_idx", columns={"gearbox_id"}), @ORM\Index(name="fk_vehicle_energy1_idx", columns={"energy_id"}), @ORM\Index(name="fk_vehicle_color_idx", columns={"color_id"})})
+ * @ORM\Table(name="vehicle")
  * @ORM\Entity
  */
 class Vehicle

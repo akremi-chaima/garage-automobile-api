@@ -17,8 +17,7 @@ class EnergyNormalizer implements NormalizerInterface
        return [
            'id' => $energy->getId(),
            'name' => $energy->getName(),
-        ];
-
+       ];
     }
 
     public function supportsNormalization($data, string $format = null, array $context = [])

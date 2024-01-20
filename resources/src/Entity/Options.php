@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Options
  *
- * @ORM\Table(name="options", indexes={@ORM\Index(name="fk_options_option_type1_idx", columns={"option_type_id"})})
+ * @ORM\Table(name="options")
  * @ORM\Entity
  */
 class Options

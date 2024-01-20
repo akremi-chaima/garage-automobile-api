@@ -21,8 +21,7 @@ class UserNormalizer implements NormalizerInterface
            'role' => $user->getRoles()[0],
            'email' => $user->getUsername(),
            'isActive' => $user->isActive(),
-        ];
-
+       ];
     }
 
     public function supportsNormalization($data, string $format = null, array $context = [])

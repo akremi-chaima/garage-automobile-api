@@ -119,7 +119,7 @@ class AddVehicleController extends AbstractController
     public function __invoke(Request $request, UserInterface $user): JsonResponse
     {
         if (!in_array(User::ROLE_ADMINISTRATOR, $user->getRoles()) && !in_array(User::ROLE_EMPLOYEE, $user->getRoles())) {
-            return new JsonResponse(['error_message' => 'The user should be administrator or employee.'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The user should be administrator or employee'], Response::HTTP_BAD_REQUEST);
         }
 
         /** @var AddVehicleDTO $dto */

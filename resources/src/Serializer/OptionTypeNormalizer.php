@@ -17,8 +17,7 @@ class OptionTypeNormalizer implements NormalizerInterface
        return [
            'id' => $optionType->getId(),
            'name' => $optionType->getName(),
-        ];
-
+       ];
     }
 
     public function supportsNormalization($data, string $format = null, array $context = [])
