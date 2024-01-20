@@ -21,8 +21,7 @@ class OpeningHoursNormalizer implements NormalizerInterface
            'morningEndHour' => $openingHours->getMorningEndHour(),
            'afternoonStartHour' => $openingHours->getAfternoonStartHour(),
            'afternoonEndHour' => $openingHours->getAfternoonEndHour(),
-        ];
-
+       ];
     }
 
     public function supportsNormalization($data, string $format = null, array $context = [])

@@ -29,8 +29,7 @@ class ModelNormalizer implements NormalizerInterface
            'id' => $model->getId(),
            'name' => $model->getName(),
            'brand' => $this->brandNormalizer->normalize($model->getBrand())
-        ];
-
+       ];
     }
 
     public function supportsNormalization($data, string $format = null, array $context = [])

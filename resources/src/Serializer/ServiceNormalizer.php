@@ -18,8 +18,7 @@ class ServiceNormalizer implements NormalizerInterface
            'id' => $service->getId(),
            'name' => $service->getName(),
            'isActive' => $service->isActive(),
-        ];
-
+       ];
     }
 
     public function supportsNormalization($data, string $format = null, array $context = [])

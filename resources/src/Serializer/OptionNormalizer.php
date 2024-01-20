@@ -28,8 +28,7 @@ class OptionNormalizer implements NormalizerInterface
            'id' => $options->getId(),
            'name' => $options->getName(),
            'optionType' => $this->optionTypeNormalizer->normalize($options->getOptionType()),
-        ];
-
+       ];
     }
 
     public function supportsNormalization($data, string $format = null, array $context = [])

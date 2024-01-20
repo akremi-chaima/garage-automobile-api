@@ -1,0 +1,8 @@
+App\DTO\UpdateFeedbackStatusDTO:
+    properties:
+        id:
+            - Type: integer
+            - NotBlank: ~
+        statusCode:
+            - Type: string
+            - NotBlank: ~

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Picture
  *
- * @ORM\Table(name="picture", indexes={@ORM\Index(name="fk_picture_vehicle1_idx", columns={"vehicle_id"})})
+ * @ORM\Table(name="picture")
  * @ORM\Entity
  */
 class Picture

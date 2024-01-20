@@ -44,7 +44,7 @@ class GetUsersController extends AbstractController
     public function __invoke(UserInterface $user): JsonResponse
     {
         if (!in_array(User::ROLE_ADMINISTRATOR, $user->getRoles())) {
-            return new JsonResponse(['error_message' => 'The user should be administrator.'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The user should be administrator'], Response::HTTP_BAD_REQUEST);
         }
 
         $users = $this->userManager->findAll();

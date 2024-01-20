@@ -17,8 +17,7 @@ class PictureNormalizer implements NormalizerInterface
        return [
            'id' => $picture->getId(),
            'url' => '/uploads/'.$picture->getVehicle()->getId().'/'.$picture->getId().'/'.$picture->getName(),
-        ];
-
+       ];
     }
 
     public function supportsNormalization($data, string $format = null, array $context = [])

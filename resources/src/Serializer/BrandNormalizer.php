@@ -17,8 +17,7 @@ class BrandNormalizer implements NormalizerInterface
        return [
            'id' => $brand->getId(),
            'name' => $brand->getName(),
-        ];
-
+       ];
     }
 
     public function supportsNormalization($data, string $format = null, array $context = [])

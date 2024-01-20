@@ -4,13 +4,17 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Model
+ * Status
  *
- * @ORM\Table(name="model")
+ * @ORM\Table(name="status")
  * @ORM\Entity
  */
-class Model
+class Status
 {
+    public const STATUS_CODE_VISIBLE = 'visible';
+    public const STATUS_CODE_HIDDEN = 'hidden';
+    public const STATUS_CODE_UNTREATED = 'untreated';
+
     /**
      * @var int
      *
@@ -28,14 +32,11 @@ class Model
     private $name;
 
     /**
-     * @var Brand
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Brand")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="code", type="string", length=45, nullable=false)
      */
-    private $brand;
+    private $code;
 
     /**
      * @return int
@@ -55,29 +56,29 @@ class Model
 
     /**
      * @param string $name
-     * @return Model
+     * @return Status
      */
-    public function setName(string $name): Model
+    public function setName(string $name): Status
     {
         $this->name = $name;
         return $this;
     }
 
     /**
-     * @return Brand
+     * @return string
      */
-    public function getBrand(): Brand
+    public function getCode(): string
     {
-        return $this->brand;
+        return $this->code;
     }
 
     /**
-     * @param Brand $brand
-     * @return Model
+     * @param string $code
+     * @return Status
      */
-    public function setBrand(Brand $brand): Model
+    public function setCode(string $code): Status
     {
-        $this->brand = $brand;
+        $this->code = $code;
         return $this;
     }
 }
