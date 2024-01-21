@@ -1,4 +1,0 @@
-App\DTO\FilterModelsDTO:
-    properties:
-        brandId:
-            - Type: integer

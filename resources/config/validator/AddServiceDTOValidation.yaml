@@ -1,7 +1,0 @@
-App\DTO\AddServiceDTO:
-    properties:
-        name:
-            - Type: string
-            - NotBlank: ~
-        isActive:
-            - Type: boolean
