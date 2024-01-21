@@ -1,7 +1,7 @@
 <?php
 namespace App\Serializer\Feedback;
 
-use App\DTO\Contact\ContactDTO;
+use App\DTO\Feedback\AddFeedbackDTO;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class FeedbackDenormalizer implements DenormalizerInterface
@@ -11,16 +11,11 @@ class FeedbackDenormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        return (new ContactDTO())
-            ->setEmail($data['email'] ?? null)
-            ->setZipCode($data['zipCode'] ?? null)
-            ->setCity($data['city'] ?? null)
-            ->setFirstName($data['firstName'] ?? null)
-            ->setLastName($data['lastName'] ?? null)
-            ->setAddress($data['address'] ?? null)
-            ->setSubject($data['subject'] ?? null)
+        return (new AddFeedbackDTO())
+            ->setStars($data['stars'] ?? null)
             ->setMessage($data['message'] ?? null)
-            ->setPhoneNumber($data['phoneNumber'] ?? null);
+            ->setFirstName($data['firstName'] ?? null)
+            ->setLastName($data['lastName'] ?? null);
     }
 
     /**
@@ -28,6 +23,6 @@ class FeedbackDenormalizer implements DenormalizerInterface
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === ContactDTO::class;
+        return $type === AddFeedbackDTO::class;
     }
 }

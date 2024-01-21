@@ -40,7 +40,7 @@ class ContactDTO
     /**
      * @inheritdoc
      */
-    private $address;
+    private $street;
 
     /**
      * @inheritdoc
@@ -163,18 +163,18 @@ class ContactDTO
     /**
      * @return mixed
      */
-    public function getAddress()
+    public function getStreet()
     {
-        return $this->address;
+        return $this->street;
     }
 
     /**
-     * @param mixed $address
+     * @param mixed $street
      * @return self
      */
-    public function setAddress($address)
+    public function setStreet($street)
     {
-        $this->address = $address;
+        $this->street = $street;
         return $this;
     }
 

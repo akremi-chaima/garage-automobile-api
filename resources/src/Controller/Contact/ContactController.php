@@ -52,14 +52,14 @@ class ContactController extends AbstractController
      *     @OA\MediaType(
      *          mediaType="application/json",
      *          @OA\Schema(
-     *              required={"subject", "lastName", "firstName", "email", "message", "phoneNumber", "address", "zipCode", "city"},
+     *              required={"subject", "lastName", "firstName", "email", "message", "phoneNumber", "street", "zipCode", "city"},
      *              @OA\Property(property="subject", type="string"),
      *              @OA\Property(property="lastName", type="string"),
      *              @OA\Property(property="firstName", type="string"),
      *              @OA\Property(property="email", type="string"),
      *              @OA\Property(property="message", type="string"),
      *              @OA\Property(property="phoneNumber", type="string"),
-     *              @OA\Property(property="address", type="string"),
+     *              @OA\Property(property="street", type="string"),
      *              @OA\Property(property="zipCode", type="string"),
      *              @OA\Property(property="city", type="string"),
      *          )
@@ -96,7 +96,7 @@ class ContactController extends AbstractController
                 <div>Prénom: '.$dto->getFirstName().'</div>
                 <div>Email: '.$dto->getEmail().'</div>
                 <div>Téléphone: '.$dto->getPhoneNumber().'</div>
-                <div>Adresse: '.nl2br($dto->getAddress()).'</div>
+                <div>Rue: '.nl2br($dto->getStreet()).'</div>
                 <div>Ville: '.$dto->getCity().'</div>
                 <div>Code postal: '.$dto->getZipCode().'</div>
                 <div>Message: '.$dto->getMessage().'</div>
