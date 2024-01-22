@@ -12,7 +12,7 @@ class UpdateFeedbackStatusDenormalizer implements DenormalizerInterface
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         return (new UpdateFeedbackStatusDTO())
-            ->setId($data['email'] ?? null)
+            ->setId($data['id'] ?? null)
             ->setStatusCode($data['statusCode'] ?? null);
     }
 
