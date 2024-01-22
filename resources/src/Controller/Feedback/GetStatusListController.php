@@ -32,7 +32,7 @@ class GetStatusListController extends AbstractController
     /**
      * Get feedback status list
      *
-     * @Route("/api/private/feedbacks/status/list", methods={"GET"})
+     * @Route("/api/private/status/feedbacks/list", methods={"GET"})
      *
      * @OA\Tag(name="Feedback")
      *
