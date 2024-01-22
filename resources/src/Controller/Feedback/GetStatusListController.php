@@ -48,8 +48,8 @@ class GetStatusListController extends AbstractController
             return new JsonResponse(['error_message' => 'The user should be administrator or employee'], Response::HTTP_BAD_REQUEST);
         }
 
-        $status = $this->statusManager->findAll();
-        $normalizedList = $this->serializer->serialize($status, 'json');
+        $statusList = $this->statusManager->findAll();
+        $normalizedList = $this->serializer->serialize($statusList, 'json');
         return new JsonResponse(json_decode($normalizedList, true), Response::HTTP_OK);
     }
 }
