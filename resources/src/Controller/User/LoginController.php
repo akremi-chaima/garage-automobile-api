@@ -115,7 +115,7 @@ class LoginController extends AbstractController
             [
                 'id' => $user->getId(),
                 'firstname' => $user->getFirstname(),
-                'roles' => $user->getRoles()[0],
+                'role' => $user->getRoles()[0],
                 'expiration' => $expiresAt->format('Ymd'),
                 'token' => $this->jwtUtil->encode($tokenData)
             ],
