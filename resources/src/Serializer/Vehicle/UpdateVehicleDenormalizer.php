@@ -22,8 +22,7 @@ class UpdateVehicleDenormalizer implements DenormalizerInterface
             ->setMileage($data['mileage'] ? intval($data['mileage']) : null)
             ->setModelId($data['modelId'] ? intval($data['modelId']) : null)
             ->setOptionsIds($data['optionsIds'] ?? null)
-            ->setPrice($data['price'] ? floatval($data['price']) : null)
-            ->setIsActive($data['isActive'] ?? false);
+            ->setPrice($data['price'] ? floatval($data['price']) : null);
     }
 
     /**

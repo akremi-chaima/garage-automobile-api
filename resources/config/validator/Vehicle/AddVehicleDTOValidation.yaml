@@ -32,5 +32,3 @@ App\DTO\Vehicle\AddVehicleDTO:
         optionsIds:
             - Type: array
             - NotBlank: ~
-        isActive:
-            - Type: boolean
