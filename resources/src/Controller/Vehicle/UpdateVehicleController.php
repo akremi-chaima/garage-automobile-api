@@ -93,7 +93,7 @@ class UpdateVehicleController extends AbstractController
      *     @OA\MediaType(
      *          mediaType="application/json",
      *          @OA\Schema(
-     *              required={"id", "price", "circulationDate", "mileage", "fiscalPower", "manufacturingYear", "colorId", "energyId", "gearboxId", "modelId", "optionsIds", "isActive"},
+     *              required={"id", "price", "circulationDate", "mileage", "fiscalPower", "manufacturingYear", "colorId", "energyId", "gearboxId", "modelId", "optionsIds"},
      *              @OA\Property(property="id", type="integer"),
      *              @OA\Property(property="price", type="float"),
      *              @OA\Property(property="circulationDate", type="string"),
@@ -105,7 +105,6 @@ class UpdateVehicleController extends AbstractController
      *              @OA\Property(property="gearboxId", type="integer"),
      *              @OA\Property(property="modelId", type="integer"),
      *              @OA\Property(property="optionsIds", type="array", @OA\Items(type="integer")),
-     *              @OA\Property(property="isActive", type="boolean"),
      *          )
      *      )
      * )
@@ -186,8 +185,7 @@ class UpdateVehicleController extends AbstractController
             $options[] = $option;
         }
 
-        $vehicle->setActive($dto->getIsActive())
-            ->setPrice($dto->getPrice())
+        $vehicle->setPrice($dto->getPrice())
             ->setMileage($dto->getMileage())
             ->setManufacturingYear($dto->getManufacturingYear())
             ->setFiscalPower($dto->getFiscalPower())

@@ -56,13 +56,6 @@ class Vehicle
     private $manufacturingYear;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="active", type="boolean", nullable=false, options={"default"="1"})
-     */
-    private $active = true;
-
-    /**
      * @var Color
      *
      * @ORM\ManyToOne(targetEntity="Color")
@@ -220,24 +213,6 @@ class Vehicle
     public function setManufacturingYear(int $manufacturingYear): Vehicle
     {
         $this->manufacturingYear = $manufacturingYear;
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isActive(): bool
-    {
-        return $this->active;
-    }
-
-    /**
-     * @param bool $active
-     * @return Vehicle
-     */
-    public function setActive(bool $active): Vehicle
-    {
-        $this->active = $active;
         return $this;
     }
 

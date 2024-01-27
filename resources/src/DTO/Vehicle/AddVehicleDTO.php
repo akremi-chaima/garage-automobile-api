@@ -35,11 +35,6 @@ class AddVehicleDTO
     /**
      * @inheritdoc
      */
-    protected $isActive;
-
-    /**
-     * @inheritdoc
-     */
     protected $colorId;
 
     /**
@@ -149,24 +144,6 @@ class AddVehicleDTO
     public function setManufacturingYear($manufacturingYear)
     {
         $this->manufacturingYear = $manufacturingYear;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * @param mixed $isActive
-     * @return self
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
         return $this;
     }
 
