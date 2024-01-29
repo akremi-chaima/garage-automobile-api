@@ -65,7 +65,7 @@ class UpdateOpeningHourController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="Opening hour updated")
-     * @OA\Response(response=400, description="The user should be administrator | The opening hour is not found")
+     * @OA\Response(response=400, description="The user should be administrator | The opening hour was not found")
      *
      * @param Request $request
      * @param UserInterface $user
@@ -93,7 +93,7 @@ class UpdateOpeningHourController extends AbstractController
         /** @var OpeningHours|null $openingHour */
         $openingHour = $this->openingHoursManager->findOneBy(['id' => $dto->getId()]);
         if (empty($openingHour)) {
-            return new JsonResponse(['error_message' => 'The opening hour is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The opening hour was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $openingHour->setDay($dto->getDay())

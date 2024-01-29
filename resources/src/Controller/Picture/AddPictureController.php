@@ -51,7 +51,7 @@ class AddPictureController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="Picture saved")
-     * @OA\Response(response=400, description="The user should be administrator or employee | The file should not be empty | The vehicle is not found")
+     * @OA\Response(response=400, description="The user should be administrator or employee | The file should not be empty | The vehicle was not found")
      *
      * @param Request $request
      * @param UserInterface $user
@@ -73,7 +73,7 @@ class AddPictureController extends AbstractController
         /** @var Vehicle|null $vehicle */
         $vehicle = $this->vehicleManager->findOneBy(['id' => $vehicleId]);
         if (empty($vehicle)) {
-            return new JsonResponse(['error_message' => 'The vehicle is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The vehicle was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $picture = (new Picture())

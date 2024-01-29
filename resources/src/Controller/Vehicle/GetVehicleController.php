@@ -44,7 +44,7 @@ class GetVehicleController extends AbstractController
     {
         $vehicle = $this->vehicleManager->findOneBy(['id' => $id]);
         if (is_null($vehicle)) {
-            return new JsonResponse(['error_message' => 'The vehicle is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The vehicle was not found'], Response::HTTP_BAD_REQUEST);
         }
         return new JsonResponse(json_decode($this->serializer->serialize($vehicle, 'json'), true), Response::HTTP_OK);
     }

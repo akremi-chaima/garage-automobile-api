@@ -62,7 +62,7 @@ class UpdateServiceController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="Service updated")
-     * @OA\Response(response=400, description="The user should be administrator | The service is not found")
+     * @OA\Response(response=400, description="The user should be administrator | The service was not found")
      *
      * @param Request $request
      * @param UserInterface $user
@@ -90,7 +90,7 @@ class UpdateServiceController extends AbstractController
         /** @var Service|null $service */
         $service = $this->serviceManager->findOneBy(['id' => $dto->getId()]);
         if (empty($service)) {
-            return new JsonResponse(['error_message' => 'The service is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The service was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $service->setName($dto->getName())

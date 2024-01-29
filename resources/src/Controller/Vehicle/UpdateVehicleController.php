@@ -110,7 +110,7 @@ class UpdateVehicleController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="Vehicle updated")
-     * @OA\Response(response=400, description="The user should be administrator or employee | The vehicle is not found | The color is not found | The gearbox is not found | The energy is not found | The model is not found | The options should not be empty | The option is not found")
+     * @OA\Response(response=400, description="The user should be administrator or employee | The vehicle was not found | The color was not found | The gearbox was not found | The energy was not found | The model was not found | The options should not be empty | The option was not found")
      *
      * @param Request $request
      * @param UserInterface $user
@@ -139,35 +139,35 @@ class UpdateVehicleController extends AbstractController
         /** @var Vehicle $vehicle */
         $vehicle = $this->vehicleManager->findOneBy(['id' => $dto->getId()]);
         if (is_null($vehicle)) {
-            return new JsonResponse(['error_message' => 'The vehicle is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The vehicle was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         // validate selected color
         /** @var Color $color */
         $color = $this->colorManager->findOneBy(['id' => $dto->getColorId()]);
         if (is_null($color)) {
-            return new JsonResponse(['error_message' => 'The color is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The color was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         // validate selected gearbox
         /** @var Gearbox $gearbox */
         $gearbox = $this->gearboxManager->findOneBy(['id' => $dto->getGearboxId()]);
         if (is_null($gearbox)) {
-            return new JsonResponse(['error_message' => 'The gearbox is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The gearbox was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         // validate selected energy
         /** @var Energy $energy */
         $energy = $this->energyManager->findOneBy(['id' => $dto->getEnergyId()]);
         if (is_null($energy)) {
-            return new JsonResponse(['error_message' => 'The energy is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The energy was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         // validate selected model
         /** @var Model $model */
         $model = $this->modelManager->findOneBy(['id' => $dto->getModelId()]);
         if (is_null($model)) {
-            return new JsonResponse(['error_message' => 'The model is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The model was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         // validate selected options
@@ -180,7 +180,7 @@ class UpdateVehicleController extends AbstractController
             /** @var Options $option */
             $option = $this->optionsManager->findOneBy(['id' => $optionId]);
             if (is_null($option)) {
-                return new JsonResponse(['error_message' => 'The option is not found'], Response::HTTP_BAD_REQUEST);
+                return new JsonResponse(['error_message' => 'The option was not found'], Response::HTTP_BAD_REQUEST);
             }
             $options[] = $option;
         }

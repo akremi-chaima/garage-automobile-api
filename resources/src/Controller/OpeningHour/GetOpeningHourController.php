@@ -40,7 +40,7 @@ class GetOpeningHourController extends AbstractController
      * @OA\Tag(name="Opening Hours")
      *
      * @OA\Response(response=200, description="Opening hour")
-     * @OA\Response(response=400, description="The user should be administrator | The opening hour is not found")
+     * @OA\Response(response=400, description="The user should be administrator | The opening hour was not found")
      *
      * @param UserInterface $user
      * @param int $id
@@ -55,7 +55,7 @@ class GetOpeningHourController extends AbstractController
         /** @var OpeningHours|null $openingHour */
         $openingHour = $this->openingHoursManager->findOneBy(['id' => $id]);
         if (empty($openingHour)) {
-            return new JsonResponse(['error_message' => 'The opening hour is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The opening hour was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $normalizedOpeningHour = $this->serializer->serialize($openingHour, 'json');

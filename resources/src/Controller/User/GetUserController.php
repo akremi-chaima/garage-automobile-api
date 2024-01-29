@@ -37,7 +37,7 @@ class GetUserController extends AbstractController
      * @OA\Tag(name="Users")
      *
      * @OA\Response(response=200, description="User")
-     * @OA\Response(response=400, description="The user should be administrator | The user is not found")
+     * @OA\Response(response=400, description="The user should be administrator | The user was not found")
      *
      * @param UserInterface $user
      * @param int $id
@@ -52,7 +52,7 @@ class GetUserController extends AbstractController
         /** @var User|null $user */
         $user = $this->userManager->findOneBy(['id' => $id]);
         if (empty($user)) {
-            return new JsonResponse(['error_message' => 'The user is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The user was not found'], Response::HTTP_BAD_REQUEST);
         }
         $normalizedUser = $this->serializer->serialize($user, 'json');
         return new JsonResponse(json_decode($normalizedUser, true), Response::HTTP_OK);

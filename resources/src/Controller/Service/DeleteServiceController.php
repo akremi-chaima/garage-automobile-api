@@ -31,7 +31,7 @@ class DeleteServiceController extends AbstractController
      * @OA\Tag(name="Services")
      *
      * @OA\Response(response=200, description="Service deleted")
-     * @OA\Response(response=400, description="The user should be administrator | The service is not found")
+     * @OA\Response(response=400, description="The user should be administrator | The service was not found")
      *
      * @param UserInterface $user
      * @param int $id
@@ -46,7 +46,7 @@ class DeleteServiceController extends AbstractController
         /** @var Service|null $service */
         $service = $this->serviceManager->findOneBy(['id' => $id]);
         if (empty($service)) {
-            return new JsonResponse(['error_message' => 'The service is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The service was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $this->serviceManager->delete($service);
