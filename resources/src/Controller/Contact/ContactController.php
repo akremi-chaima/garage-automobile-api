@@ -2,7 +2,6 @@
 namespace App\Controller\Contact;
 
 use App\DTO\Contact\ContactDTO;
-use App\Security\JwtUtil;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,22 +21,22 @@ class ContactController extends AbstractController
     /** @var ValidatorInterface */
     protected $validator;
 
-    /** @var JwtUtil */
-    protected $jwtUtil;
+    /** @var MailerInterface */
+    private $mailer;
 
     /**
      * @param SerializerInterface $serializer
      * @param ValidatorInterface $validator
-     * @param JwtUtil $jwtUtil
+     * @param MailerInterface $mailer
      */
     public function __construct(
         SerializerInterface $serializer,
         ValidatorInterface $validator,
-        JwtUtil $jwtUtil
+        MailerInterface $mailer
     ) {
         $this->serializer = $serializer;
         $this->validator = $validator;
-        $this->jwtUtil = $jwtUtil;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -72,7 +71,7 @@ class ContactController extends AbstractController
      * @param Request $request
      * @return JsonResponse
      */
-    public function __invoke(Request $request, MailerInterface $mailer): JsonResponse
+    public function __invoke(Request $request): JsonResponse
     {
         /** @var ContactDTO $dto */
         $dto = $this->serializer->deserialize($request->getContent(), ContactDTO::class, 'json');
@@ -102,7 +101,7 @@ class ContactController extends AbstractController
                 <div>Message: '.$dto->getMessage().'</div>
             ');
 
-        $mailer->send($email);
+        $this->mailer->send($email);
         return new JsonResponse(['message' => 'OK'], Response::HTTP_OK);
     }
 }

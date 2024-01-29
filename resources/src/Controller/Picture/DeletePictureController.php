@@ -31,7 +31,7 @@ class DeletePictureController extends AbstractController
      * @OA\Tag(name="Pictures")
      *
      * @OA\Response(response=200, description="Picture deleted")
-     * @OA\Response(response=400, description="The user should be administrator or employee | The picture is not found")
+     * @OA\Response(response=400, description="The user should be administrator or employee | The picture was not found")
      *
      * @param UserInterface $user
      * @param int $id
@@ -46,7 +46,7 @@ class DeletePictureController extends AbstractController
         /** @var Picture|null $picture */
         $picture = $this->pictureManager->findOneBy(['id' => $id]);
         if (empty($picture)) {
-            return new JsonResponse(['error_message' => 'The picture is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The picture was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $directory = $this->getParameter('kernel.project_dir').'/public/uploads/'.$picture->getVehicle()->getId().'/'.$picture->getId();

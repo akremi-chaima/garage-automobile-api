@@ -70,7 +70,7 @@ class UpdateFeedbackStatusController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="Feedback updated")
-     * @OA\Response(response=400, description="The feedback not found | The status is not found")
+     * @OA\Response(response=400, description="The feedback not found | The status was not found")
      *
      * @param Request $request
      * @param UserInterface $user
@@ -99,14 +99,14 @@ class UpdateFeedbackStatusController extends AbstractController
         /** @var Status|null $status */
         $status = $this->statusManager->findOneBy(['code' => $dto->getStatusCode()]);
         if (empty($status)) {
-            return new JsonResponse(['error_message' => 'The status is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The status was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         // Get feedback to update by id
         /** @var Feedback|null $feedback */
         $feedback = $this->feedbackManager->findOneBy(['id' => $dto->getId()]);
         if (empty($feedback)) {
-            return new JsonResponse(['error_message' => 'The feedback is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The feedback was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $feedback->setStatus($status);

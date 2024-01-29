@@ -88,7 +88,7 @@ class GetModelsController extends AbstractController
             /** @var Brand|null $brand */
             $brand = $this->brandManager->findOneBy(['id' => $dto->getBrandId()]);
             if (empty($brand)) {
-                return new JsonResponse(['error_message' => 'The brand is not found'], Response::HTTP_BAD_REQUEST);
+                return new JsonResponse(['error_message' => 'The brand was not found'], Response::HTTP_BAD_REQUEST);
             }
             $filter = ['brand' => $brand];
         }

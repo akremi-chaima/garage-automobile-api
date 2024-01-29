@@ -31,7 +31,7 @@ class DeleteVehicleController extends AbstractController
      * @OA\Tag(name="Vehicles")
      *
      * @OA\Response(response=200, description="Vehicle deleted")
-     * @OA\Response(response=400, description="The user should be administrator or employee | The vehicle is not found")
+     * @OA\Response(response=400, description="The user should be administrator or employee | The vehicle was not found")
      *
      * @param UserInterface $user
      * @param int $id
@@ -46,7 +46,7 @@ class DeleteVehicleController extends AbstractController
         /** @var Vehicle|null $vehicle */
         $vehicle = $this->vehicleManager->findOneBy(['id' => $id]);
         if (empty($vehicle)) {
-            return new JsonResponse(['error_message' => 'The vehicle is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The vehicle was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $this->vehicleManager->delete($vehicle);

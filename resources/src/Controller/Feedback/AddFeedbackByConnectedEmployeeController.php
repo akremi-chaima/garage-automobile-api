@@ -72,7 +72,7 @@ class AddFeedbackByConnectedEmployeeController extends AbstractController
      * )
      *
      * @OA\Response(response=200, description="Feedback saved")
-     * @OA\Response(response=400, description="Invalid data | The status is not found | The user should be administrator or employee")
+     * @OA\Response(response=400, description="Invalid data | The status was not found | The user should be administrator or employee")
      *
      * @param Request $request
      * @param UserInterface $user
@@ -101,7 +101,7 @@ class AddFeedbackByConnectedEmployeeController extends AbstractController
         /** @var Status|null $status */
         $status = $this->statusManager->findOneBy(['code' => Status::STATUS_CODE_VISIBLE]);
         if (empty($status)) {
-            return new JsonResponse(['error_message' => 'The status is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The status was not found'], Response::HTTP_BAD_REQUEST);
         }
 
         $feedback = (new Feedback())

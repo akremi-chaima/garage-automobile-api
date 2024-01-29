@@ -37,7 +37,7 @@ class GetServiceController extends AbstractController
      * @OA\Tag(name="Services")
      *
      * @OA\Response(response=200, description="Service")
-     * @OA\Response(response=400, description="The user should be administrator | The service is not found")
+     * @OA\Response(response=400, description="The user should be administrator | The service was not found")
      *
      * @param UserInterface $user
      * @param int $id
@@ -51,7 +51,7 @@ class GetServiceController extends AbstractController
 
         $service = $this->serviceManager->findOneBy(['id' => $id]);
         if (is_null($service)) {
-            return new JsonResponse(['error_message' => 'The service is not found'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['error_message' => 'The service was not found'], Response::HTTP_BAD_REQUEST);
         }
         $normalizedService = $this->serializer->serialize($service, 'json');
         return new JsonResponse(json_decode($normalizedService, true), Response::HTTP_OK);
