@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240205194838 extends AbstractMigration
+final class Version20240205200059 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,21 +20,18 @@ final class Version20240205194838 extends AbstractMigration
     public function up(Schema $schema): void
     {
         $this->addSql('
-            CREATE TABLE `user` (
+            CREATE TABLE `service` (
                 `id` INT NOT NULL AUTO_INCREMENT,
-                `firstname` VARCHAR(60) NOT NULL,
-                `lastname` VARCHAR(60) NOT NULL,
-                `email` VARCHAR(60) NOT NULL,
-                `password` VARCHAR(200) NOT NULL,
-                `role` VARCHAR(16) NOT NULL,
+                `name` VARCHAR(100) NOT NULL,
                 `active` TINYINT NOT NULL DEFAULT 1,
                 PRIMARY KEY (`id`)
             )
         ');
+
     }
 
     public function down(Schema $schema): void
     {
-        $this->addSql('DROP TABLE `user`');
+        $this->addSql('DROP TABLE `service`');
     }
 }
