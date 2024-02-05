@@ -27,7 +27,6 @@ final class Version20240205204200 extends AbstractMigration
                 `mileage` INT NOT NULL,
                 `fiscal_power` INT NOT NULL,
                 `manufacturing_year` INT NOT NULL,
-                `active` TINYINT NOT NULL DEFAULT 1,
                 `color_id` INT NOT NULL,
                 `model_id` INT NOT NULL,
                 `energy_id` INT NOT NULL,

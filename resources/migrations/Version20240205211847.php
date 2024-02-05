@@ -21,7 +21,7 @@ final class Version20240205211847 extends AbstractMigration
     {
         $this->addSql('
             CREATE TABLE `status` (
-                `id` int(11) NOT NULL,
+                `id` INT NOT NULL AUTO_INCREMENT,
                 `name` varchar(45) NOT NULL,
                 `code` varchar(45) NOT NULL,
                 PRIMARY KEY (`id`)
