@@ -14,7 +14,7 @@ final class Version20240205203419 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'option_type table';
     }
 
     public function up(Schema $schema): void

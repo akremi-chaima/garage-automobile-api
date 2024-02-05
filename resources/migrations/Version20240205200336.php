@@ -14,7 +14,7 @@ final class Version20240205200336 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'opening_hours table';
     }
 
     public function up(Schema $schema): void

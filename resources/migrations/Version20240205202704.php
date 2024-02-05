@@ -14,7 +14,7 @@ final class Version20240205202704 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'energy table';
     }
 
     public function up(Schema $schema): void

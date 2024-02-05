@@ -14,7 +14,7 @@ final class Version20240205203111 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'gearbox table';
     }
 
     public function up(Schema $schema): void

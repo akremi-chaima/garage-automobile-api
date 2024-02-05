@@ -14,7 +14,7 @@ final class Version20240205201338 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'brand table';
     }
 
     public function up(Schema $schema): void

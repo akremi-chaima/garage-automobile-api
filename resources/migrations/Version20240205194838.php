@@ -14,7 +14,7 @@ final class Version20240205194838 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'user table';
     }
 
     public function up(Schema $schema): void
@@ -26,7 +26,7 @@ final class Version20240205194838 extends AbstractMigration
                 `lastname` VARCHAR(60) NOT NULL,
                 `email` VARCHAR(60) NOT NULL,
                 `password` VARCHAR(200) NOT NULL,
-                `role` VARCHAR(16) NOT NULL,
+                `role` ENUM(\'administrator\', \'employee\')  NOT NULL,
                 `active` TINYINT NOT NULL DEFAULT 1,
                 PRIMARY KEY (`id`)
             )

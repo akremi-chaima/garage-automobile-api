@@ -10,29 +10,27 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240205201720 extends AbstractMigration
+final class Version20240205211847 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return 'model table';
+        return 'feedback status table';
     }
 
     public function up(Schema $schema): void
     {
         $this->addSql('
-            CREATE TABLE `model` (
-                `id` INT NOT NULL AUTO_INCREMENT,
-                `name` VARCHAR(45) NOT NULL,
-                `brand_id` INT NOT NULL,
-                PRIMARY KEY (`id`),
-                FOREIGN KEY (`brand_id`)
-                REFERENCES `brand` (`id`)
+            CREATE TABLE `status` (
+                `id` int(11) NOT NULL,
+                `name` varchar(45) NOT NULL,
+                `code` varchar(45) NOT NULL,
+                PRIMARY KEY (`id`)
             )
         ');
     }
 
     public function down(Schema $schema): void
     {
-        $this->addSql('DROP TABLE `model`');
+        $this->addSql('DROP TABLE `status`');
     }
 }
