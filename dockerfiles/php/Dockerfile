@@ -18,7 +18,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN printf '[PHP]\date.timezone = "Europe/Paris"\n' > /usr/local/etc/php/conf.d/tzone.ini
 
 
-# On ajoute les sources (a clean pour ajouter uniquement les sources de l'app et pas le reste)
+# On ajoute les sources
 ADD ./resources /app
 WORKDIR /app
 
@@ -26,14 +26,4 @@ WORKDIR /app
 RUN chown -R www-data. .
 USER www-data
 
-
-#RUN composer install
-#RUN bin/console assets:install
-
-
-# On se remet en root pour un pouvoir bouger les données sur un volume partagé.
-
-# voir les commands après run pour le docker-compose
 USER root
-
-### docker build --build-arg env=prod -t tonapp . 
