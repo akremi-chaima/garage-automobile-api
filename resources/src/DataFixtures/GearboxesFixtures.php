@@ -19,6 +19,7 @@ class GearboxesFixtures extends Fixture
             $gearbox = (new Gearbox())
                 ->setName($gearboxName);
             $manager->persist($gearbox);
+            $this->addReference($gearboxName, $gearbox);
         }
 
         $manager->flush();

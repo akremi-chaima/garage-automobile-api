@@ -21,6 +21,7 @@ class EnergiesFixtures extends Fixture
             $energy = (new Energy())
                 ->setName($energyName);
             $manager->persist($energy);
+            $this->addReference($energyName, $energy);
         }
 
         $manager->flush();

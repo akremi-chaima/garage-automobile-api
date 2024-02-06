@@ -21,6 +21,7 @@ class OptionTypesFixtures extends Fixture
             $optionType = (new OptionType())
                 ->setName($optionTypeName);
             $manager->persist($optionType);
+            $this->addReference($optionTypeName, $optionType);
         }
 
         $manager->flush();

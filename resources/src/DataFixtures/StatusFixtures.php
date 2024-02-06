@@ -21,6 +21,7 @@ class StatusFixtures extends Fixture
                 ->setName($feedbackStatus['name'])
                 ->setCode($feedbackStatus['code']);
             $manager->persist($status);
+            $this->addReference($feedbackStatus['code'], $status);
         }
 
         $manager->flush();
