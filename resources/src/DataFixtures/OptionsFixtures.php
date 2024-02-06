@@ -4,9 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Options;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class OptionsFixtures extends Fixture
+class OptionsFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -95,5 +96,12 @@ class OptionsFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            OptionTypesFixtures::class,
+        ];
     }
 }

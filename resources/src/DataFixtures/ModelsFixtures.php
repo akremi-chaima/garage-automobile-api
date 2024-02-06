@@ -4,9 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Model;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class ModelsFixtures extends Fixture
+class ModelsFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -108,5 +109,12 @@ class ModelsFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            BrandsFixtures::class,
+        ];
     }
 }
