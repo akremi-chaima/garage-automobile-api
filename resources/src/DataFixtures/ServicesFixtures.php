@@ -19,9 +19,9 @@ class ServicesFixtures extends Fixture
             'Montages de pneus'
         ];
 
-        foreach ($services as $service) {
+        foreach ($services as $serviceName) {
             $service = (new Service())
-                ->setName($service)
+                ->setName($serviceName)
                 ->setActive(true);
             $manager->persist($service);
         }
