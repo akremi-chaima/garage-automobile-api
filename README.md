@@ -14,3 +14,4 @@
   - Créer les tables 
     - Soit exécuter la commande `docker compose run php bin/console doctrine:schema:update --force` pour créer les tables à partir les entités
     - Soit exécuter la commande `docker compose run php bin/console doctrine:migrations:migrate` pour créer les tables à partir les migrations 
+  - Initialiser la base de données `docker compose run php bin/console doctrine:fixtures:load -q`

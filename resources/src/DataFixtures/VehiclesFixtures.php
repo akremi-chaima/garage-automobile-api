@@ -98,7 +98,7 @@ class VehiclesFixtures extends Fixture implements DependentFixtureInterface
             $vehicleOptions = [];
             // Add options randomly
             for ($i = 0; $i < 10; $i++) {
-                $vehicleOptions[] = $this->getReference($options[rand(0, count($options))]);
+                $vehicleOptions[] = $this->getReference($options[rand(0, count($options) - 1)]);
             }
             $vehicle->setOptions($vehicleOptions);
             $manager->persist($vehicle);
