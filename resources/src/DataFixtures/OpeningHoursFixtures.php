@@ -29,17 +29,17 @@ class OpeningHoursFixtures extends Fixture
                 ->setDay($day);
 
             if (!in_array($day, ['Samedi', 'Dimanche'])) {
-                $openingHour->setMorningEndHour($morningStartHour)
+                $openingHour->setMorningStartHour($morningStartHour)
                     ->setMorningEndHour($morningEndHour)
                     ->setAfternoonStartHour($afternoonStartHour)
                     ->setAfternoonEndHour($afternoonEndHour);
             } else if ($day == 'Samedi') {
-                $openingHour->setMorningEndHour($morningStartHour)
+                $openingHour->setMorningStartHour($morningStartHour)
                     ->setMorningEndHour($morningEndHour)
                     ->setAfternoonStartHour(null)
                     ->setAfternoonEndHour(null);
             } if ($day == 'Dimanche') {
-                $openingHour->setMorningEndHour(null)
+                $openingHour->setMorningStartHour(null)
                     ->setMorningEndHour(null)
                     ->setAfternoonStartHour(null)
                     ->setAfternoonEndHour(null);
