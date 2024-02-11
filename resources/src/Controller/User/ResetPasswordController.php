@@ -67,15 +67,15 @@ class ResetPasswordController extends AbstractController
         $this->userManager->save($user);
 
         // send new password by email
-        $email = (new Email())
-            ->to(getenv('CONTACT_MAIL'))
+        $emailObj = (new Email())
+            ->to($email)
             ->subject('Nouveau mot de passe')
             ->from(getenv('CONTACT_MAIL'))
             ->html('
                 <div>Votre nouveau mot de passe: '.$password.'</div>
             ');
 
-        $this->mailer->send($email);
+        $this->mailer->send($emailObj);
         return new JsonResponse(['message' => 'OK'], Response::HTTP_OK);
     }
 
