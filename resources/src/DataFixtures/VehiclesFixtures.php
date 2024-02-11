@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Picture;
 use App\Entity\Vehicle;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -13,7 +14,7 @@ class VehiclesFixtures extends Fixture implements DependentFixtureInterface
     {
         $vehicles = [
             ['price' => 15000, 'circulationDate' => new \DateTime('2023-10-15'), 'mileage' => 65000, 'fiscalPower' => 7, 'manufacturingYear' => 2023, 'color' => 'Rouge', 'energy' => 'Diesel', 'gearbox' => 'Boîte automatique', 'model' => 'A1'],
-            ['price' => 10000, 'circulationDate' => new \DateTime('2022-12-01'), 'mileage' => 5000, 'fiscalPower' => 5, 'manufacturingYear' => 2022, 'color' => 'Vert', 'energy' => 'Essence', 'gearbox' => 'Boîte manuelle', 'model' => 'X1'],
+            ['price' => 10000, 'circulationDate' => new \DateTime('2022-12-01'), 'mileage' => 5000, 'fiscalPower' => 5, 'manufacturingYear' => 2022, 'color' => 'Blanc', 'energy' => 'Essence', 'gearbox' => 'Boîte manuelle', 'model' => 'X1'],
             ['price' => 30000, 'circulationDate' => new \DateTime('2023-09-09'), 'mileage' => 7000, 'fiscalPower' => 7, 'manufacturingYear' => 2023, 'color' => 'Blanc', 'energy' => 'Hybrides', 'gearbox' => 'Boîte automatique', 'model' => 'X3'],
             ['price' => 55000, 'circulationDate' => new \DateTime('2023-12-01'), 'mileage' => 2000, 'fiscalPower' => 9, 'manufacturingYear' => 2023, 'color' => 'Noir', 'energy' => 'Diesel', 'gearbox' => 'Boîte manuelle', 'model' => 'GLC'],
         ];
@@ -102,9 +103,18 @@ class VehiclesFixtures extends Fixture implements DependentFixtureInterface
             }
             $vehicle->setOptions($vehicleOptions);
             $manager->persist($vehicle);
+            $manager->flush();
+            mkdir('./public/uploads/'.$vehicle->getId());
+            for ($i = 1; $i < 4; $i++) {
+                $picture = (new Picture())
+                    ->setName($i . '.png')
+                    ->setVehicle($vehicle);
+                $manager->persist($picture);
+                $manager->flush();
+                mkdir('./public/uploads/'.$vehicle->getId().'/'.$picture->getId());
+                copy('./public/images/'.strtolower($vehicleDetails['model']).'/'.$i . '.png', './public/uploads/'.$vehicle->getId().'/'.$picture->getId().'/'.$i . '.png');
+            }
         }
-
-        $manager->flush();
     }
 
     public function getDependencies()
