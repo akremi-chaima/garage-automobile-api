@@ -84,7 +84,7 @@ class VehiclesFixtures extends Fixture implements DependentFixtureInterface
             'Radar avant de détection d\'obstacles',
             'Volant réglable'
         ];
-
+        mkdir('./public/uploads');
         foreach ($vehicles as $vehicleDetails) {
             $vehicle = (new Vehicle())
                 ->setPrice($vehicleDetails['price'])
